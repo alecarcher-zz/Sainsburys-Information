@@ -559,3 +559,14 @@ ORDER BY [c].[Name]
 2019-10-08 09:11:17.4978|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
 2019-10-08 09:11:17.5175|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) in 133.4998ms
 2019-10-08 09:11:17.5321|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 192.1583ms 200 application/json; charset=utf-8
+2019-10-08 09:36:01.9614|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-10-08 09:36:05.4302|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/  
+2019-10-08 09:36:05.9017|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 554.7916ms 404 text/plain
+2019-10-08 09:36:05.9715|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+2019-10-08 09:36:05.9827|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 18.3246ms 404 text/plain

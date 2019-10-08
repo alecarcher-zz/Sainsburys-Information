@@ -14,7 +14,6 @@ C:\Development\Sainsbury-Information-System\SainsburyInfo-Backend\src\CityInfo.A
 C:\Development\Sainsbury-Information-System\SainsburyInfo-Backend\src\CityInfo.API\bin\Debug\netcoreapp2.0\CityInfo.API.runtimeconfig.dev.json
 C:\Development\Sainsbury-Information-System\SainsburyInfo-Backend\src\CityInfo.API\bin\Debug\netcoreapp2.0\CityInfo.API.dll
 C:\Development\Sainsbury-Information-System\SainsburyInfo-Backend\src\CityInfo.API\bin\Debug\netcoreapp2.0\CityInfo.API.pdb
-C:\Development\Sainsbury-Information-System\SainsburyInfo-Backend\src\CityInfo.API\obj\Debug\netcoreapp2.0\CityInfo.API.csprojAssemblyReference.cache
 C:\Development\Sainsbury-Information-System\SainsburyInfo-Backend\src\CityInfo.API\obj\Debug\netcoreapp2.0\CityInfo.API.csproj.CoreCompileInputs.cache
 C:\Development\Sainsbury-Information-System\SainsburyInfo-Backend\src\CityInfo.API\obj\Debug\netcoreapp2.0\CityInfo.API.AssemblyInfoInputs.cache
 C:\Development\Sainsbury-Information-System\SainsburyInfo-Backend\src\CityInfo.API\obj\Debug\netcoreapp2.0\CityInfo.API.AssemblyInfo.cs
