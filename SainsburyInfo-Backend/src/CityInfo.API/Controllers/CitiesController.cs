@@ -73,6 +73,31 @@ namespace CityInfo.API.Controllers
             return Ok(city);
         }
 
+        //[HttpPost()]
+        //public IActionResult CreatePointOfInterest([FromBody] PointOfInterestDto pointOfInterest)
+        //{
+        //    if (pointOfInterest == null)
+        //    {
+        //        return BadRequest();
+        //    }
+
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+
+        //    var mapPointOfInterest = Mapper.Map<Entities.PointOfInterest>(pointOfInterest);
+
+        //    _cityInfoRepository.AddPointOfInterestForCity(mapPointOfInterest);
+
+        //    if (!_cityInfoRepository.Save())
+        //    {
+        //        return StatusCode(500, "A problem happened while handling your request.");
+        //    }
+
+        //    return Ok(pointOfInterest);
+        //}
+
         [HttpDelete("{id}")]
         public IActionResult DeleteCity (int id)
         {
