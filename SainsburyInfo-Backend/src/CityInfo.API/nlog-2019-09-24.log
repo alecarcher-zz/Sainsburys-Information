@@ -1,0 +1,172 @@
+2019-09-24 09:45:45.7669|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-09-24 09:45:46.6314|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (54ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-09-24 09:45:46.9858|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (49ms) [Parameters=[@p0='?' (Size = 200), @p1='?' (Size = 50), @p2='?' (Size = 200), @p3='?' (Size = 50), @p4='?' (Size = 200), @p5='?' (Size = 50)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([Id] int, [_Position] [int]);
+MERGE [Cities] USING (
+VALUES (@p0, @p1, 0),
+(@p2, @p3, 1),
+(@p4, @p5, 2)) AS i ([Description], [Name], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Description], [Name])
+VALUES (i.[Description], i.[Name])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted0;
+
+SELECT [t].[Id] FROM [Cities] t
+INNER JOIN @inserted0 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];
+2019-09-24 09:45:47.0195|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (8ms) [Parameters=[@p6='?', @p7='?' (Size = 200), @p8='?' (Size = 50), @p9='?', @p10='?' (Size = 200), @p11='?' (Size = 50), @p12='?', @p13='?' (Size = 200), @p14='?' (Size = 50), @p15='?', @p16='?' (Size = 200), @p17='?' (Size = 50), @p18='?', @p19='?' (Size = 200), @p20='?' (Size = 50), @p21='?', @p22='?' (Size = 200), @p23='?' (Size = 50)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+DECLARE @inserted0 TABLE ([Id] int, [_Position] [int]);
+MERGE [PointsOfInterest] USING (
+VALUES (@p6, @p7, @p8, 0),
+(@p9, @p10, @p11, 1),
+(@p12, @p13, @p14, 2),
+(@p15, @p16, @p17, 3),
+(@p18, @p19, @p20, 4),
+(@p21, @p22, @p23, 5)) AS i ([CityId], [Description], [Name], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([CityId], [Description], [Name])
+VALUES (i.[CityId], i.[Description], i.[Name])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted0;
+
+SELECT [t].[Id] FROM [PointsOfInterest] t
+INNER JOIN @inserted0 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];
+2019-09-24 09:45:49.0826|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/  
+2019-09-24 09:45:49.5526|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 618.3143ms 404 text/plain
+2019-09-24 09:45:49.6091|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+2019-09-24 09:45:49.6268|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 7.9803ms 404 text/plain
+2019-09-24 09:45:57.4123|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities/4/pointsofinterest  
+2019-09-24 09:45:57.7328|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) with arguments (4) - ModelState is Valid
+2019-09-24 09:45:57.7454|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-09-24 09:45:57.8351|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c]
+        WHERE [c].[Id] = @__cityId_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-09-24 09:45:57.8351|INFO|CityInfo.API.Controllers.PointsOfInterestController|City with id 4 wasn't found when accessing points of interest.
+2019-09-24 09:45:57.8639|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 404
+2019-09-24 09:45:57.8811|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) in 275.0349ms
+2019-09-24 09:45:57.8811|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 484.8712ms 404 text/plain
+2019-09-24 09:46:08.0553|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities  
+2019-09-24 09:46:08.0553|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) with arguments ((null)) - ModelState is Valid
+2019-09-24 09:46:08.0762|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-09-24 09:46:08.1446|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2019-09-24 09:46:08.2408|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-09-24 09:46:08.4918|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) in 422.1115ms
+2019-09-24 09:46:08.5092|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 445.2211ms 200 application/json; charset=utf-8
+2019-09-24 09:46:19.4841|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities/1  
+2019-09-24 09:46:19.5004|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCity (CityInfo.API) with arguments (1, False) - ModelState is Valid
+2019-09-24 09:46:19.5082|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-09-24 09:46:19.5269|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+2019-09-24 09:46:19.5373|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-09-24 09:46:19.5373|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCity (CityInfo.API) in 51.4746ms
+2019-09-24 09:46:19.5608|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 70.4645ms 200 application/json; charset=utf-8
+2019-09-24 09:46:23.8699|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities/3  
+2019-09-24 09:46:23.8934|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCity (CityInfo.API) with arguments (3, False) - ModelState is Valid
+2019-09-24 09:46:23.8934|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-09-24 09:46:23.9138|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+2019-09-24 09:46:23.9138|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-09-24 09:46:23.9309|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCity (CityInfo.API) in 40.0142ms
+2019-09-24 09:46:23.9309|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 79.2255ms 200 application/json; charset=utf-8
+2019-09-24 09:46:32.1451|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities/1/pointsofinterest  
+2019-09-24 09:46:32.1451|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) with arguments (1) - ModelState is Valid
+2019-09-24 09:46:32.1636|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-09-24 09:46:32.1636|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c]
+        WHERE [c].[Id] = @__cityId_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-09-24 09:46:32.2791|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (77ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[CityId], [p].[Description], [p].[Name]
+FROM [PointsOfInterest] AS [p]
+WHERE [p].[CityId] = @__cityId_0
+2019-09-24 09:46:32.3376|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-09-24 09:46:32.3652|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) in 201.1313ms
+2019-09-24 09:46:32.3814|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 227.1233ms 200 application/json; charset=utf-8
+2019-09-24 13:33:04.3037|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-09-24 13:33:06.3112|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (62ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-09-24 13:33:09.3965|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/  
+2019-09-24 13:33:10.3168|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities  
+2019-09-24 13:33:11.3052|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 1760.3359ms 404 text/plain
+2019-09-24 13:33:11.4118|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+2019-09-24 13:33:11.4118|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 25.9849ms 404 text/plain
+2019-09-24 13:33:11.5322|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) with arguments ((null)) - ModelState is Valid
+2019-09-24 13:33:11.5498|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-09-24 13:33:11.7499|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2019-09-24 13:33:11.8973|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-09-24 13:33:12.1949|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) in 732.8576ms
+2019-09-24 13:33:12.2322|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 2032.4886ms 200 application/json; charset=utf-8
+2019-09-24 13:33:25.2220|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities/id  
+2019-09-24 13:33:25.3505|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCity (CityInfo.API) with arguments (0, False) - ModelState is Invalid
+2019-09-24 13:33:25.3644|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-09-24 13:33:25.5188|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (54ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+2019-09-24 13:33:25.5475|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 404
+2019-09-24 13:33:25.5749|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCity (CityInfo.API) in 284.9589ms
+2019-09-24 13:33:25.6178|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 364.2114ms 404 text/plain
+2019-09-24 13:33:30.6255|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities/name  
+2019-09-24 13:33:30.6441|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCity (CityInfo.API) with arguments (0, False) - ModelState is Invalid
+2019-09-24 13:33:30.6962|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-09-24 13:33:30.7187|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+WHERE [c].[Id] = @__cityId_0
+2019-09-24 13:33:30.7318|INFO|Microsoft.AspNetCore.Mvc.StatusCodeResult|Executing HttpStatusCodeResult, setting HTTP status code 404
+2019-09-24 13:33:30.7491|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCity (CityInfo.API) in 103.7838ms
+2019-09-24 13:33:30.8194|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 169.1124ms 404 text/plain
+2019-09-24 13:33:33.8802|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities/  
+2019-09-24 13:33:33.8802|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) with arguments ((null)) - ModelState is Valid
+2019-09-24 13:33:33.8950|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-09-24 13:33:33.8950|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2019-09-24 13:33:33.9119|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-09-24 13:33:33.9119|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) in 32.1788ms
+2019-09-24 13:33:33.9450|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 77.5898ms 200 application/json; charset=utf-8
+2019-09-24 13:34:16.3456|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities/  
+2019-09-24 13:34:16.3580|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) with arguments ((null)) - ModelState is Valid
+2019-09-24 13:34:16.3743|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-09-24 13:34:16.3901|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2019-09-24 13:34:16.3970|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-09-24 13:34:16.4154|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) in 51.2996ms
+2019-09-24 13:34:16.4489|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 82.7168ms 200 application/json; charset=utf-8

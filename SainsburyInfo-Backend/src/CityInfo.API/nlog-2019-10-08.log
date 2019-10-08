@@ -1,0 +1,561 @@
+2019-10-08 08:39:20.0584|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-10-08 08:39:26.0516|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/  
+2019-10-08 08:39:26.5018|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 568.9229ms 404 text/plain
+2019-10-08 08:39:26.5800|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+2019-10-08 08:39:26.5996|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 15.9855ms 404 text/plain
+2019-10-08 08:40:40.8003|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities  
+2019-10-08 08:40:40.8114|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 08:40:41.0789|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 08:40:41.1445|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:40:41.1555|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:40:41.1664|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 08:40:41.1893|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 08:40:41.2487|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) with arguments ((null)) - ModelState is Valid
+2019-10-08 08:40:41.3637|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2019-10-08 08:40:41.4916|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 08:40:41.6934|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) in 675.8741ms
+2019-10-08 08:40:41.7019|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 903.6302ms 200 application/json; charset=utf-8
+2019-10-08 08:40:59.8040|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities/16/pointsofinterest  
+2019-10-08 08:40:59.8098|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 08:40:59.8747|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 08:40:59.8747|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:40:59.8908|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:40:59.9009|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 08:40:59.9009|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 08:40:59.9934|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) with arguments (16) - ModelState is Valid
+2019-10-08 08:41:00.0968|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (44ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c]
+        WHERE [c].[Id] = @__cityId_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-10-08 08:41:00.1148|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (2ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[CityId], [p].[Description], [p].[Name]
+FROM [PointsOfInterest] AS [p]
+WHERE [p].[CityId] = @__cityId_0
+2019-10-08 08:41:00.1292|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 08:41:00.1396|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) in 263.83ms
+2019-10-08 08:41:00.1396|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 343.2018ms 200 application/json; charset=utf-8
+2019-10-08 08:54:42.1835|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/cities/  
+2019-10-08 08:54:42.2004|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 08:54:42.2220|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 33.4988ms 204 
+2019-10-08 08:54:42.2358|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 POST http://localhost:5000/api/cities/ application/json 45
+2019-10-08 08:54:42.2358|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 08:54:42.2602|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 08:54:43.0478|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:54:43.0478|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:54:43.0614|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 08:54:43.0614|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 08:54:43.2161|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.CreatCity (CityInfo.API) with arguments (CityInfo.API.Models.CityDto) - ModelState is Valid
+2019-10-08 08:54:43.4418|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (7ms) [Parameters=[@p0='?' (Size = 200), @p1='?' (Size = 50)], CommandType='Text', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Cities] ([Description], [Name])
+VALUES (@p0, @p1);
+SELECT [Id]
+FROM [Cities]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2019-10-08 08:54:43.4898|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 08:54:43.5079|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.CreatCity (CityInfo.API) in 1241.0133ms
+2019-10-08 08:54:43.5106|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities  
+2019-10-08 08:54:43.5266|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 08:54:43.5266|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 1303.9572ms 200 application/json; charset=utf-8
+2019-10-08 08:54:43.5409|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 08:54:43.5409|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:54:43.5593|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:54:43.5593|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 08:54:43.5742|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 08:54:43.5742|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) with arguments ((null)) - ModelState is Valid
+2019-10-08 08:54:43.6024|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2019-10-08 08:54:43.6197|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 08:54:43.6197|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) in 91.5851ms
+2019-10-08 08:54:43.6460|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 134.0449ms 200 application/json; charset=utf-8
+2019-10-08 08:54:52.4873|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities/17/pointsofinterest  
+2019-10-08 08:54:52.4980|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 08:54:52.4980|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 08:54:52.5169|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:54:52.5365|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:54:52.5442|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 08:54:52.5615|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 08:54:52.5768|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) with arguments (17) - ModelState is Valid
+2019-10-08 08:54:52.5975|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (2ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c]
+        WHERE [c].[Id] = @__cityId_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-10-08 08:54:52.6079|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (4ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[CityId], [p].[Description], [p].[Name]
+FROM [PointsOfInterest] AS [p]
+WHERE [p].[CityId] = @__cityId_0
+2019-10-08 08:54:52.6079|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 08:54:52.6256|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) in 118.3768ms
+2019-10-08 08:54:52.6362|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 144.8557ms 200 application/json; charset=utf-8
+2019-10-08 08:54:58.3179|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities/1/pointsofinterest  
+2019-10-08 08:54:58.3249|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 08:54:58.3249|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 08:54:58.3438|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:54:58.3576|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:54:58.3576|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 08:54:58.3737|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 08:54:58.3866|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) with arguments (1) - ModelState is Valid
+2019-10-08 08:54:58.4030|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c]
+        WHERE [c].[Id] = @__cityId_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-10-08 08:54:58.4197|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[CityId], [p].[Description], [p].[Name]
+FROM [PointsOfInterest] AS [p]
+WHERE [p].[CityId] = @__cityId_0
+2019-10-08 08:54:58.4390|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 08:54:58.4509|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) in 115.8692ms
+2019-10-08 08:54:58.4509|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 145.5475ms 200 application/json; charset=utf-8
+2019-10-08 08:55:03.2363|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities/1/pointsofinterest  
+2019-10-08 08:55:03.2363|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 08:55:03.2526|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 08:55:03.2612|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:55:03.2612|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:55:03.2880|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 08:55:03.2951|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 08:55:03.3078|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) with arguments (1) - ModelState is Valid
+2019-10-08 08:55:03.3078|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c]
+        WHERE [c].[Id] = @__cityId_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-10-08 08:55:03.3260|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[CityId], [p].[Description], [p].[Name]
+FROM [PointsOfInterest] AS [p]
+WHERE [p].[CityId] = @__cityId_0
+2019-10-08 08:55:03.3260|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 08:55:03.3397|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) in 89.6578ms
+2019-10-08 08:55:03.3397|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 109.1743ms 200 application/json; charset=utf-8
+2019-10-08 08:56:34.9884|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities  
+2019-10-08 08:56:35.0015|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 08:56:35.0160|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 08:56:35.0346|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:56:35.0569|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:56:35.0569|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 08:56:35.0856|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 08:56:35.1026|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) with arguments ((null)) - ModelState is Valid
+2019-10-08 08:56:35.1196|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2019-10-08 08:56:35.1196|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 08:56:35.1406|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) in 125.5183ms
+2019-10-08 08:56:35.1723|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 157.9278ms 200 application/json; charset=utf-8
+2019-10-08 08:56:36.8542|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities/1/pointsofinterest  
+2019-10-08 08:56:36.8542|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 08:56:36.8708|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 08:56:36.8708|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:56:36.8992|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:56:36.9188|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 08:56:36.9319|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 08:56:36.9319|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) with arguments (1) - ModelState is Valid
+2019-10-08 08:56:36.9537|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c]
+        WHERE [c].[Id] = @__cityId_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-10-08 08:56:36.9638|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[CityId], [p].[Description], [p].[Name]
+FROM [PointsOfInterest] AS [p]
+WHERE [p].[CityId] = @__cityId_0
+2019-10-08 08:56:36.9638|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 08:56:36.9889|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) in 115.1788ms
+2019-10-08 08:56:36.9998|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 144.5025ms 200 application/json; charset=utf-8
+2019-10-08 08:56:42.9326|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities  
+2019-10-08 08:56:42.9326|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 08:56:42.9596|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 08:56:42.9729|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:56:43.0049|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:56:43.0291|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 08:56:43.0420|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 08:56:43.0420|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) with arguments ((null)) - ModelState is Valid
+2019-10-08 08:56:43.0678|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2019-10-08 08:56:43.0785|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 08:56:43.1026|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) in 139.76ms
+2019-10-08 08:56:43.1162|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 180.1628ms 200 application/json; charset=utf-8
+2019-10-08 08:56:52.5228|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities/16/pointsofinterest  
+2019-10-08 08:56:52.5297|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 08:56:52.5297|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 08:56:52.5510|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:56:52.5601|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:56:52.5730|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 08:56:52.5730|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 08:56:52.6029|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) with arguments (16) - ModelState is Valid
+2019-10-08 08:56:52.6029|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c]
+        WHERE [c].[Id] = @__cityId_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-10-08 08:56:52.6247|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[CityId], [p].[Description], [p].[Name]
+FROM [PointsOfInterest] AS [p]
+WHERE [p].[CityId] = @__cityId_0
+2019-10-08 08:56:52.6362|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 08:56:52.6362|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) in 103.9647ms
+2019-10-08 08:56:52.6593|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 129.6748ms 200 application/json; charset=utf-8
+2019-10-08 08:58:10.2980|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities/4/pointsofinterest  
+2019-10-08 08:58:10.3086|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 08:58:10.3358|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 08:58:10.3470|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:58:10.3600|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:58:10.3745|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 08:58:10.3865|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 08:58:10.3865|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) with arguments (4) - ModelState is Valid
+2019-10-08 08:58:10.4064|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c]
+        WHERE [c].[Id] = @__cityId_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-10-08 08:58:10.4159|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[CityId], [p].[Description], [p].[Name]
+FROM [PointsOfInterest] AS [p]
+WHERE [p].[CityId] = @__cityId_0
+2019-10-08 08:58:10.4159|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 08:58:10.4400|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) in 103.5359ms
+2019-10-08 08:58:10.4563|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 150.6589ms 200 application/json; charset=utf-8
+2019-10-08 08:58:12.7362|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities/4/pointsofinterest  
+2019-10-08 08:58:12.7362|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 08:58:12.7513|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 08:58:12.7513|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:58:12.7722|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 08:58:12.7853|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 08:58:12.7956|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 08:58:12.8091|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) with arguments (4) - ModelState is Valid
+2019-10-08 08:58:12.8231|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Cities] AS [c]
+        WHERE [c].[Id] = @__cityId_0)
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-10-08 08:58:12.8402|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[@__cityId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[CityId], [p].[Description], [p].[Name]
+FROM [PointsOfInterest] AS [p]
+WHERE [p].[CityId] = @__cityId_0
+2019-10-08 08:58:12.8546|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 08:58:12.8546|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.PointsOfInterestController.GetPointsOfInterest (CityInfo.API) in 112.944ms
+2019-10-08 08:58:12.8762|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 138.725ms 200 application/json; charset=utf-8
+2019-10-08 09:00:46.0272|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities  
+2019-10-08 09:00:46.0272|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 09:00:46.0592|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 09:00:46.0767|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:00:46.1033|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:00:46.1254|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 09:00:46.1357|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 09:00:46.1532|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) with arguments ((null)) - ModelState is Valid
+2019-10-08 09:00:46.1658|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2019-10-08 09:00:46.1658|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 09:00:46.1908|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) in 134.8224ms
+2019-10-08 09:00:46.2025|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 174.9113ms 200 application/json; charset=utf-8
+2019-10-08 09:01:22.5814|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities  
+2019-10-08 09:01:22.5954|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 09:01:22.6498|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 09:01:22.6498|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:01:22.6850|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:01:22.7031|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 09:01:22.7135|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 09:01:22.7337|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) with arguments ((null)) - ModelState is Valid
+2019-10-08 09:01:22.7337|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2019-10-08 09:01:22.7540|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 09:01:22.7726|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) in 115.8404ms
+2019-10-08 09:01:22.8961|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 199.5329ms 200 application/json; charset=utf-8
+2019-10-08 09:01:34.1256|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities  
+2019-10-08 09:01:34.1714|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 09:01:34.1920|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 09:01:34.2223|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:01:34.2411|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:01:34.2528|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 09:01:34.2679|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 09:01:34.3172|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) with arguments ((null)) - ModelState is Valid
+2019-10-08 09:01:34.3544|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2019-10-08 09:01:34.4895|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 09:01:34.6239|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) in 317.7998ms
+2019-10-08 09:01:34.7553|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 530.6249ms 200 application/json; charset=utf-8
+2019-10-08 09:02:07.7589|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities  
+2019-10-08 09:02:07.7683|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 09:02:07.8016|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 09:02:07.8226|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:02:07.8402|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:02:07.8573|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 09:02:07.8714|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 09:02:07.8714|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) with arguments ((null)) - ModelState is Valid
+2019-10-08 09:02:07.8926|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2019-10-08 09:02:07.9071|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 09:02:07.9182|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) in 132.3361ms
+2019-10-08 09:02:07.9500|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 165.6235ms 200 application/json; charset=utf-8
+2019-10-08 09:03:11.3992|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities  
+2019-10-08 09:03:11.4756|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 09:03:11.4962|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 09:03:11.5105|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:03:11.5258|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:03:11.5434|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 09:03:11.5579|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 09:03:11.5579|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) with arguments ((null)) - ModelState is Valid
+2019-10-08 09:03:11.5803|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2019-10-08 09:03:11.5947|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 09:03:11.6222|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) in 110.6568ms
+2019-10-08 09:03:11.6673|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 232.853ms 200 application/json; charset=utf-8
+2019-10-08 09:03:40.8552|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities  
+2019-10-08 09:03:40.8863|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 09:03:40.9095|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 09:03:40.9645|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:03:40.9935|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:03:41.0155|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 09:03:41.0292|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 09:03:41.0414|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) with arguments ((null)) - ModelState is Valid
+2019-10-08 09:03:41.0904|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2019-10-08 09:03:41.1110|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 09:03:41.1376|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) in 215.2988ms
+2019-10-08 09:03:41.1868|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 292.135ms 200 application/json; charset=utf-8
+2019-10-08 09:04:42.2766|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities  
+2019-10-08 09:04:42.4242|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 09:04:42.4858|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 09:04:42.5075|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:04:42.5210|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:04:42.5307|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 09:04:42.5417|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 09:04:42.5417|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) with arguments ((null)) - ModelState is Valid
+2019-10-08 09:04:42.5606|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2019-10-08 09:04:42.5741|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 09:04:42.5885|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) in 101.8238ms
+2019-10-08 09:04:42.6299|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 328.9366ms 200 application/json; charset=utf-8
+2019-10-08 09:05:00.2426|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities  
+2019-10-08 09:05:00.2836|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 09:05:00.3254|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 09:05:00.3916|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (32ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:05:00.4006|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:05:00.4006|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 09:05:00.4221|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 09:05:00.4221|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) with arguments ((null)) - ModelState is Valid
+2019-10-08 09:05:00.4443|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2019-10-08 09:05:00.4818|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 09:05:00.5419|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) in 183.5582ms
+2019-10-08 09:05:00.6223|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 318.6689ms 200 application/json; charset=utf-8
+2019-10-08 09:05:31.2562|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities  
+2019-10-08 09:05:31.2935|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 09:05:31.3200|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 09:05:31.3483|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:05:31.3979|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:05:31.4591|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 09:05:31.4760|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 09:05:31.4946|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) with arguments ((null)) - ModelState is Valid
+2019-10-08 09:05:31.4946|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2019-10-08 09:05:31.5222|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 09:05:31.5382|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) in 216.5755ms
+2019-10-08 09:05:31.6229|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 308.8369ms 200 application/json; charset=utf-8
+2019-10-08 09:05:45.8443|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities  
+2019-10-08 09:05:45.8889|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 09:05:45.9085|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 09:05:45.9213|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:05:45.9415|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:05:45.9818|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 09:05:45.9997|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 09:05:45.9997|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) with arguments ((null)) - ModelState is Valid
+2019-10-08 09:05:46.0217|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2019-10-08 09:05:46.0296|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 09:05:46.0442|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) in 143.7827ms
+2019-10-08 09:05:46.0560|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 209.1849ms 200 application/json; charset=utf-8
+2019-10-08 09:11:17.3383|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request starting HTTP/1.1 GET http://localhost:5000/api/cities  
+2019-10-08 09:11:17.3560|INFO|Microsoft.AspNetCore.Cors.Infrastructure.CorsService|Policy execution successful.
+2019-10-08 09:11:17.3884|INFO|Microsoft.EntityFrameworkCore.Infrastructure|Entity Framework Core 2.0.0-rtm-26452 initialized 'CityInfoContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-10-08 09:11:17.4073|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:11:17.4221|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'__EFMigrationsHistory');
+2019-10-08 09:11:17.4525|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-10-08 09:11:17.4727|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date.
+2019-10-08 09:11:17.4861|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executing action method CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) with arguments ((null)) - ModelState is Valid
+2019-10-08 09:11:17.4978|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Cities] AS [c]
+ORDER BY [c].[Name]
+2019-10-08 09:11:17.4978|INFO|Microsoft.AspNetCore.Mvc.Internal.ObjectResultExecutor|Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2019-10-08 09:11:17.5175|INFO|Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker|Executed action CityInfo.API.Controllers.CitiesController.GetCities (CityInfo.API) in 133.4998ms
+2019-10-08 09:11:17.5321|INFO|Microsoft.AspNetCore.Hosting.Internal.WebHost|Request finished in 192.1583ms 200 application/json; charset=utf-8
