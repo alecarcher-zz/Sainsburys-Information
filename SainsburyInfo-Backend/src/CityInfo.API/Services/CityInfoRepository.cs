@@ -54,10 +54,10 @@ namespace CityInfo.API.Services
             city.PointsOfInterest.Add(pointOfInterest);
         }
 
-        //public void AddPointOfInterestForCity(PointOfInterest pointOfInterest)
-        //{
-        //    _context.PointOfInterest.Add(pointOfInterest);
-        //}
+        public void UpdateDescription(City city)
+        {
+            _context.Cities.Update(city);
+        }
 
         public void AddNewCity(City city)
         {

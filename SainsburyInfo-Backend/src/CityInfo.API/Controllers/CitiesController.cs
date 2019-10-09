@@ -23,7 +23,7 @@ namespace CityInfo.API.Controllers
         public IActionResult GetCities()
         {
             var cityEntities = _cityInfoRepository.GetCities();
-            var results = Mapper.Map<IEnumerable<CityWithoutPointsOfInterestDto>>(cityEntities); 
+            var results = Mapper.Map<IEnumerable<CityWithoutPointsOfInterestDto>>(cityEntities);
 
             return Ok(results);
         }
@@ -40,7 +40,7 @@ namespace CityInfo.API.Controllers
 
             if (includePointsOfInterest)
             {
-                var cityResult = Mapper.Map<CityDto>(city); 
+                var cityResult = Mapper.Map<CityDto>(city);
                 return Ok(cityResult);
             }
 
@@ -73,30 +73,44 @@ namespace CityInfo.API.Controllers
             return Ok(city);
         }
 
-        //[HttpPost()]
-        //public IActionResult CreatePointOfInterest([FromBody] PointOfInterestDto pointOfInterest)
-        //{
-        //    if (pointOfInterest == null)
-        //    {
-        //        return BadRequest();
-        //    }
+        [HttpPost()]
+        public IActionResult CreatePointOfInterest([FromBody] int cityId, PointOfInterestDto pointOfInterest)
+        {
+            if (pointOfInterest == null)
+            {
+                return BadRequest();
+            }
 
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-        //    var mapPointOfInterest = Mapper.Map<Entities.PointOfInterest>(pointOfInterest);
+            var mapPointOfInterest = Mapper.Map<Entities.PointOfInterest>(pointOfInterest);
+            _cityInfoRepository.AddPointOfInterestForCity(cityId, mapPointOfInterest);
 
-        //    _cityInfoRepository.AddPointOfInterestForCity(mapPointOfInterest);
+            if (!_cityInfoRepository.Save())
+            {
+                return StatusCode(500, "A problem happened while handling your request.");
+            }
 
-        //    if (!_cityInfoRepository.Save())
-        //    {
-        //        return StatusCode(500, "A problem happened while handling your request.");
-        //    }
+            return Ok(pointOfInterest);
+        }
 
-        //    return Ok(pointOfInterest);
-        //}
+        [HttpPatch()]
+        public IActionResult UpdateDesctription([FromBody] CityDto city)
+        {
+            var mapUpdateDescription = Mapper.Map<Entities.City>(city);
+            _cityInfoRepository.UpdateDescription(mapUpdateDescription);
+
+            if (!_cityInfoRepository.Save())
+            {
+                return StatusCode(500, "A problem happened while handling your request.");
+            }
+
+            return Ok();
+        }
+
 
         [HttpDelete("{id}")]
         public IActionResult DeleteCity (int id)
